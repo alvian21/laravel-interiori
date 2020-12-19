@@ -12,11 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/login','AuthController@index');
+Route::post('/login','AuthController@login')->name('login');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'admin','middelware'=>'CheckAuth'], function () {
+ Route::resource('dashboard', 'DashboardController');
 });
 
-Route::get('/admin',function(){
-    return view('admin.dashboard.index');
-});
