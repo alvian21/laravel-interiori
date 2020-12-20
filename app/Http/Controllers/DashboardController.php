@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -13,7 +14,29 @@ class DashboardController extends Controller
      */
     public function index()
     {
-       return view('admin.dashboard.index');
+        $token = session('token');
+        $response = Http::withHeaders([
+            'Authorization' => $token
+        ])->get(config('app.api_url') . '/user');
+        $result = $response->json();
+        if ($result['message'] == 'Ok.') {
+            $data = $result['data'];
+            $user = [];
+            $designer = [];
+            foreach ($data as $row) {
+
+                if ($row['role'] == 'user') {
+                    $x['id'] = $row['id'];
+                    array_push($user, $x);
+                }
+
+                if ($row['role'] == 'designer') {
+                    $x['id'] = $row['id'];
+                    array_push($designer, $x);
+                }
+            }
+        }
+        return view('admin.dashboard.index', ['user' => count($user), 'designer' => count($designer)]);
     }
 
     /**

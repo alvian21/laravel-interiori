@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Layout › Default — Stisla</title>
+    <title>Dashboard | Admin</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{asset('assets/modules/bootstrap/css/bootstrap.min.css')}}">
@@ -29,7 +29,7 @@
         </div>
         <footer class="main-footer">
           <div class="footer-left">
-            Copyright © 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
+            Copyright © {{date('Y')}} <div class="bullet"></div> Interiori
           </div>
           <div class="footer-right">
             v2.0.0

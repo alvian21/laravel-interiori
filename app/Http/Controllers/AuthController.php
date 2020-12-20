@@ -13,8 +13,11 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if($request->session()->has('token')){
+            return redirect('/admin/dashboard');
+        }
         return view('auth.login');
     }
 
@@ -100,11 +103,21 @@ class AuthController extends Controller
             ]);
 
             $result = $response->json();
-           
+
             if ($result['message'] == 'Ok.') {
                 session(['token' => $result['data']['token']]);
                 return redirect('/admin/dashboard');
+            }else{
+                return redirect()->back()->with('error','wrong email or password');
             }
+        }
+    }
+
+    public function logout(Request $request)
+    {
+        if($request->session()->has('token')){
+            session()->flush();
+            return redirect("/login");
         }
     }
 }
