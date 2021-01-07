@@ -12,8 +12,8 @@
     <ul class="navbar-nav navbar-right">
 
       <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-        <img alt="image" src="../dist/img/avatar/avatar-1.png" width="30" class="rounded-circle mr-1">
-        <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div></a>
+        {{-- <img alt="image" src="../dist/img/avatar/avatar-1.png" width="30" class="rounded-circle mr-1"> --}}
+        <div class="d-sm-none d-lg-inline-block">Hi, {{session('username')}}</div></a>
         <div class="dropdown-menu dropdown-menu-right">
 
           <div class="dropdown-divider"></div>

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
-class DashboardController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,25 +23,22 @@ class DashboardController extends Controller
             if ($result['message'] == 'Ok.') {
                 $data = $result['data'];
                 $user = [];
-                $designer = [];
                 foreach ($data as $row) {
                     if ($row['role'] == 'user') {
                         $x['id'] = $row['id'];
+                        $x['username'] = $row['username'];
+                        $x['full_name'] = $row['full_name'];
+                        $x['email'] = $row['email'];
                         array_push($user, $x);
                     }
-                    if ($row['role'] == 'designer') {
-                        $x['id'] = $row['id'];
-                        array_push($designer, $x);
-                    }
                 }
-                return view('admin.dashboard.index', ['user' => count($user), 'designer' => count($designer)]);
+                return view('admin.user.index', ['user' => $user]);
             }
         }
         else{
             session()->flush();
             return redirect("/login");
         }
-
     }
 
     /**

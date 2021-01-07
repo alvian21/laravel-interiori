@@ -19,4 +19,5 @@ Route::post('/login', 'AuthController@login')->name('login');
 Route::group(['prefix' => 'admin', 'middelware' => 'CheckAuth'], function () {
     Route::get('/logout', 'AuthController@logout')->name('logout');
     Route::resource('dashboard', 'DashboardController');
+    Route::resource('user', 'UserController');
 });

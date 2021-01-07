@@ -101,11 +101,14 @@ class AuthController extends Controller
                 'email' => $request->get('email'),
                 'password' => $request->get('password'),
             ]);
-
             $result = $response->json();
-
             if ($result['message'] == 'Ok.') {
                 session(['token' => $result['data']['token']]);
+                $user = Http::withHeaders([
+                    'Authorization' =>  $result['data']['token']
+                ])->get(config('app.api_url') . '/user/profile');
+                $userdata = $user->json();
+                session(['username'=>$userdata['data']['username']]);
                 return redirect('/admin/dashboard');
             }else{
                 return redirect()->back()->with('error','wrong email or password');
