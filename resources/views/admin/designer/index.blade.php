@@ -20,7 +20,7 @@
                                         <th>Username</th>
                                         <th>Fullname</th>
                                     </tr>
-                                    @foreach($user as $row)
+                                    @foreach($designer as $row)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td class="font-weight-600">{{$row['username']}}</td>

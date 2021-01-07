@@ -11,6 +11,7 @@
         <li >
           <a href="{{route('dashboard.index')}}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
           <a href="{{route('user.index')}}" class="nav-link"><i class="fas fa-user"></i><span>User</span></a>
+          <a href="{{route('designer.index')}}" class="nav-link"><i class="fas fa-user"></i><span>Designer</span></a>
 
         </li>
 
