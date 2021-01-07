@@ -3,13 +3,13 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>User</h1>
+            <h1>Designer</h1>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>List User</h4>
+                        <h4>List Designer</h4>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive table-invoice">
